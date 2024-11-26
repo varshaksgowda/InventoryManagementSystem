@@ -20,10 +20,11 @@ namespace IMSWebApi.Data
 
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-   
+        public DbSet<AuditLog> AuditLogs { get; set; }
 
 
-       
+
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

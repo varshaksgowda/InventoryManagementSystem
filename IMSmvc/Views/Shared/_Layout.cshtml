@@ -23,23 +23,25 @@
                 @if (ViewBag.Role == "Admin")
                 {
                     <ul class="navbar-nav flex-grow-1">
-                       
+
                         <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Supplier", "Supplier", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Product", "Product", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Order", "Order", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Report", "Report", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("AuditLogs", "AuditLog", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
 
                     </ul>
                 }
                 else if (ViewBag.Role == "Supplier")
                 {
                     @*this is for supplier*@
-                    <ul class="navbar-nav flex-grow-1">
-                        < li > @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" }) </ li >
-                        < li > @Html.ActionLink("Product", "Product", "Supplier", new { area = "" }, new { @class = "nav-link" }) </ li >
-                        < li > @Html.ActionLink("Order", "Order", "Supplier", new { area = "" }, new { @class = "nav-link" }) </ li >
-                    </ul>
+            <ul class="navbar-nav flex-grow-1">
+                < li > @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" }) </ li >
+                < li > @Html.ActionLink("Product", "Product", "Supplier", new { area = "" }, new { @class = "nav-link" }) </ li >
+                < li > @Html.ActionLink("Order", "Order", "Supplier", new { area = "" }, new { @class = "nav-link" }) </ li >
+                < li > @Html.ActionLink("ReturnTrack", "ReturnTrack", "Supplier", new { area = "" }, new { @class = "nav-link" }) </ li >
+            </ul>
                 }
                 else
                 {

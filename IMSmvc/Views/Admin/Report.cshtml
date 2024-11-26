@@ -15,7 +15,10 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f4;
+            /*            background-color: #f4f4f4;*/
+            background-image: url("https://img.freepik.com/premium-photo/abstract-design-elementannual-saleshopping-season-conceptmini-cart-with-colorful-paper-bag-white-wooden-table-backgroundtop-viewflat-lay_1040174-5645.jpg?ga=GA1.1.1982704250.1732540291&semt=ais_hybrid");
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         h1, h2, h3 {
@@ -128,7 +131,7 @@
     <br />
 
     <script>
-        const apiUrl = 'https://localhost:44340/api/Reports/inventoryreport'; // Adjust API URL accordingly
+        const apiUrl = 'http://localhost:5108/api/Reports/inventoryreport'; 
         let currentReports = [];
 
         function displayMessage(message, isError = false) {

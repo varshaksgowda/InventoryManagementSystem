@@ -51,6 +51,12 @@
                     border-radius: 4px;
                     border: 1px solid #ccc;
                 }
+                .form-group select {
+                    flex: 1;
+                    padding: 8px;
+                    border-radius: 4px;
+                    border: 1px solid #ccc;
+                }
 
             button {
                 padding: 10px;
@@ -130,8 +136,14 @@
 
             <div class="form-group">
                 <label for="categoryId">Category ID:</label>
-                <input type="number" id="categoryId" name="categoryId" required>
+                <select id="categoryId" name="categoryId" required>
+                  
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
             </div>
+
 
             <div class="form-group">
                 <label for="stockLevel">Stock Level:</label>
@@ -144,10 +156,11 @@
             </div>
 
             <div class="form-group">
-                <label for="supplierId">Supplier Id:</label>
-                <input type="number" id="supplierId" name="supplierId" required>
+                <label for="supplierId">Supplier ID:</label>
+                <select id="supplierId" name="supplierId" required>
+                    <option value="">Select Supplier</option>
+                </select>
             </div>
-
             <button type="button" onclick="postProduct()">Submit</button>
             <button type="button" id="updateButton" style="display:none;" onclick="putProduct()">Update</button>
         </div>
@@ -160,8 +173,8 @@
         <div id="ProductsList" style="color:wheat"></div>
 
         <script>
-                    const apiUrl = 'https://localhost:44340/api/Products'; // Adjust API URL accordingly
-            const supplierApiUrl = 'https://localhost:44340/api/Suppliers'; // Adjust API URL for suppliers
+            const apiUrl = 'http://localhost:5108/api/Products'; 
+            const supplierApiUrl = 'http://localhost:5108/api/Suppliers'; 
 
         // Display the supplier dropdown
         function loadSuppliers() {
@@ -267,7 +280,7 @@
                                     return Promise.reject('Failed to update');
                                 }
                                 if (response.status === 204) {
-                                    displayMessage('Product updated successfully (no content returned).');
+                                    displayMessage('Product updated successfully.');
                                     fetchAllProducts(); // Refresh the list
                                     resetForm(); // Reset the form after the update
                                     return;
@@ -345,7 +358,7 @@
 
                     function checkStock(productId, stockLevel) {
                         // Prompt user for how many products they want to subtract from the stock
-                        const quantityToSubtract = parseInt(prompt("How many products do you want to subtract from the stock?", "0"));
+                        const quantityToSubtract = parseInt(prompt("How many products do you want to buy?", "0"));
 
                         // Validate the input to ensure it's a valid number
                         if (isNaN(quantityToSubtract) || quantityToSubtract < 0) {
@@ -355,7 +368,7 @@
 
                         // Check if the requested subtraction exceeds available stock
                         if (quantityToSubtract > stockLevel) {
-                            alert("Not enough stock. You can't subtract more than the available stock.");
+                            alert("Not enough stock. You can't buy more than the available stock.");
                             return;
                         }
 
@@ -465,6 +478,7 @@
 
                                 document.querySelector("button[type='button']").style.display = 'none';
                                 document.getElementById("updateButton").style.display = 'inline-block';
+                                window.scrollTo(0, 0);
                             })
                             .catch(error => {
                                 displayMessage('Error fetching product details: ' + error, true);

@@ -25,6 +25,10 @@ namespace IMSmvc.Controllers
         {
             return View();
         }
+        public ActionResult AuditLog()
+        {
+            return View();
+        }
 
     }
 }

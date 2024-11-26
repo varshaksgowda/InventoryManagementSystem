@@ -72,7 +72,15 @@ namespace IMSWebApi.Controllers
                     throw;
                 }
             }
-
+            // Create an audit log entry for the update action
+            var auditLog = new AuditLog
+            {
+                Action = "Update Supplier",
+                Description = $"Updated supplier with ID {supplier.SupplierId}.",
+                SupplierID = supplier.SupplierId,
+                ActionDate = DateTime.Now
+            };
+            await _context.SaveChangesAsync();
             return NoContent();
         }
 
@@ -92,6 +100,15 @@ namespace IMSWebApi.Controllers
             _context.Suppliers.Add(supplier);
             await _context.SaveChangesAsync();
 
+            //audit logs code
+            await _context.AuditLogs.AddAsync(new AuditLog
+            {
+                Action = "Add Supplier",
+                Description = " Adding Supplier",
+                SupplierID = supplier.SupplierId,
+                ActionDate = DateTime.Now,
+            });
+            await _context.SaveChangesAsync();
             return CreatedAtAction("GetSupplier", new { id = supplier.SupplierId }, supplier);
         }
 

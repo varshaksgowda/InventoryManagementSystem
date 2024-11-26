@@ -17,5 +17,9 @@ namespace IMSmvc.Controllers
         {
             return View();
         }
+        public ActionResult ReturnTrack()
+        {
+            return View();
+        }
     }
 }
