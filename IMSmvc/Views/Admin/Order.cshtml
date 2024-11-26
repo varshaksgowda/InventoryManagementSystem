@@ -119,15 +119,7 @@
     <label id="responseMessage"></label>
 
 
-    <h2>View Orders by Product ID</h2>
-    <div>
-        <!-- Dropdown for selecting Product ID -->
-        <select id="searchProductId" required>
-            <option value="">Select Product ID</option>
-            <!-- Dynamic options will be added here -->
-        </select>
-        <button type="button" onclick="fetchOrdersByProductId()">Search Orders by Product ID</button>
-    </div>
+    
 
     <h2>View All Orders</h2>
     <button type="button" onclick="fetchAllOrders()">View All Orders</button>
@@ -136,41 +128,9 @@
 
     <script>
         // API URL (update with your actual API endpoints)
-        const productsApiUrl = 'https://localhost:5108/api/Products';  // API to fetch all products
+        
         const ordersApiUrl = 'http://localhost:5108/api/Orders'; 
 
-        // Function to fetch products from the API
-        function fetchProducts() {
-            fetch(productsApiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    populateProductDropdown(data);
-                })
-                .catch(error => {
-                    displayMessage('Error fetching product data.', true);
-                });
-        }
-
-        // Function to populate the Product ID dropdown dynamically
-        function populateProductDropdown(products) {
-            const productDropdown = document.getElementById("searchProductId");
-
-            // Clear any existing options
-            productDropdown.innerHTML = '<option value="">Select Product ID</option>';
-
-            // Add options dynamically from fetched products
-            products.forEach(product => {
-                // Ensure both productId exists before adding it to the dropdown
-                if (product.productId) {
-                    const option = document.createElement("option");
-                    option.value = product.productId; // Set the productId as the option's value
-                    option.textContent = product.productId; // Set the productId as the option's label
-                    productDropdown.appendChild(option);
-                } else {
-                    console.error('Product data missing "productId"', product);
-                }
-            });
-        }
 
         // Function to fetch orders by Product ID
         function fetchOrdersByProductId() {

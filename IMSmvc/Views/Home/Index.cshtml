@@ -19,29 +19,6 @@
             background-size: cover;
         }
 
-
-
-        .header .auth-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-left: 1000px;
-            top: -30px;
-        }
-
-            .header .auth-buttons a {
-                text-decoration: none;
-                color: #fff;
-                padding: 0.5rem 1rem;
-                border: 1px solid #fff;
-                border-radius: 5px;
-                transition: background-color 0.3s;
-            }
-
-                .header .auth-buttons a:hover {
-                    background-color: #fff;
-                    color: #000;
-                }
-
         .hero {
             color: #fff;
             padding: 6rem 0;
@@ -75,19 +52,47 @@
                 margin-bottom: 1.5rem;
             }
 
-        /* Adjust padding to account for fixed header */
-        #home {
-            padding-top: 100px;
+        .role-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            text-align: center;
         }
+
+            .role-section h3 {
+                color: #333;
+            }
+
+            .role-section p {
+                color: #555;
+            }
     </style>
 </head>
 <body>
-
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h2>Efficiently Manage Your Inventory</h2>
             <p>Our Inventory Management System helps streamline your inventory with powerful tools for product, order, and supplier management.</p>
+
+            <!-- Role-Specific Content -->
+            @if (ViewBag.Role == "Admin")
+            {
+                <div class="role-section">
+                    <h3>Welcome, Admin!</h3>
+                    <p>"Leadership is not about being in charge. It's about taking care of those in your charge."</p>
+                    <p>"Your role is pivotal in maintaining order and driving efficiency within the system."</p>
+                </div>
+            }
+            else if (ViewBag.Role == "Supplier")
+            {
+                <div class="role-section">
+                    <h3>Welcome, Supplier!</h3>
+                    <p>"Efficiency is doing things right; effectiveness is doing the right things."</p>
+                    <p>"Your contributions help keep the supply chain seamless and customers satisfied."</p>
+                </div>
+            }
         </div>
     </section>
 </body>
